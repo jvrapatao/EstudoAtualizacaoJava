@@ -1,4 +1,3 @@
-
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -16,6 +15,10 @@ public class Crypto {
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
         byte[] encrypted = cipher.doFinal("Olá Mundo!".getBytes());
 
-        System.out.println(encrypted);
+        //descriptografar mensagem
+        cipher.init(Cipher.DECRYPT_MODE, secretKey);
+        byte[] decrypted = cipher.doFinal(encrypted);
+
+        System.out.println(new String(decrypted));
     }
 }
